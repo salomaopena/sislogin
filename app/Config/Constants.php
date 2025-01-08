@@ -92,3 +92,9 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+//
+//My Constants
+//
+
+define('APP_NAME',      'APP With Login');

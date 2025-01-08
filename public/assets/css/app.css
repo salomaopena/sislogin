@@ -1,0 +1,51 @@
+/*styles.css*/
+:root{
+    --top-bar-bg-color:#FF914d;
+    --top-bar-fg-color:#fff;
+    --menu-bg-color:#330000;
+  
+    --menu-fg-color:#fff;
+    --menu-group-fg-color:#ffd800;
+  
+    --content-bg-color:#ddd;
+    --content-fg-color:#000;
+  
+    --footer-bg-color:#000000;
+    --footer-fg-color:#bbb;
+  
+    --color-white:#fff;
+    --color-black:#000;
+    --shadow: 0px 2px 4px rgba(0,0,0,.1);
+  
+    --login-bg-page-01: #14213d;
+    --login-bg-page-02: #000000;
+  
+    --login-bg-box-01:#FEF9E1;
+    --login-bg-box-02:#e5e5e5;
+  
+    --btn-login-border:#7E634C;
+    --btn-login-hover:#290000;
+  
+    --login-link:#290000;
+    --login-link-hover:#fca311;
+  }
+  
+  *{
+      font-family: "Rajdhani", serif;
+  }
+
+  .login-form{
+    background: radial-gradient(circle at top, var(--login-bg-page-01), var(--login-bg-page-02));
+    box-shadow: var(--shadow);
+    height: 100vh;
+  }
+
+  .btn-login{
+    border: none;
+    border-radius: 10px;
+    background: var(--btn-login-border);
+    color: var(--color-white);
+    padding: 10px 20px;
+    transition: background 0.3s ease;
+    font-weight: 500;
+  }
