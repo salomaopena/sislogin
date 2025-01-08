@@ -8,7 +8,7 @@
                 <p class="text-muted text-center">Faça login para aceder ao sistema.</p>
                 <hr>
 
-                <?=form_open('login-submit')?>
+                <?=form_open('login-submit',['novalidate'=>true])?>
                 
                     <div class="form-group mb-3">
                         <label class="form-label" for="username">Usuário</label>
@@ -21,9 +21,19 @@
                     <div class="form-group mb-3">
                         <button type="submit" class="btn btn-secondary w-100 btn-login">Login</button>
                     </div>
-               
-
+            
                 <?=form_close()?>
+
+                <?php if(!empty($validation_errors)):?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach($validation_errors as $error):?>
+                                <li><?=$error?></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div> 
+                        
+                <?php endif?>
             </div>
 
         </div>
