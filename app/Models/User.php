@@ -43,4 +43,33 @@ class User extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function verify_login($username, $password)
+    {
+        //busca utilizador na base de dados
+        $user = $this->where('username', $username)->first();
+        /**
+         * - procurar na base de dados se existe um utilizador com as credenciais fornecidas.
+         * - verificar se a senha é equivalente a senha fornecida
+         * 
+         */
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                //senha correcta
+                return $user;
+            }
+        } else {
+            //login incorrecto
+            return false;
+        }
+
+
+        //$user = $this->db->table('users');
+        //$user->where('username', $username);
+        //$user->where('password', $password);
+        //$query = $user->get();
+        //return $query->getRow();
+
+
+    }
 }

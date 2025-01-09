@@ -12,6 +12,7 @@ use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\PageCache;
 use CodeIgniter\Filters\PerformanceMetrics;
 use CodeIgniter\Filters\SecureHeaders;
+use \App\Filters\IsLoggedIn;
 
 class Filters extends BaseFilters
 {
@@ -34,6 +35,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'isLoggedIn'      => IsLoggedIn::class,
     ];
 
     /**
@@ -69,6 +71,7 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
+            'isLoggedIn'  => ['except'=> ['login-form', 'login-submit']]
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
@@ -92,7 +95,10 @@ class Filters extends BaseFilters
      *
      * @var array<string, list<string>>
      */
-    public array $methods = [];
+    public array $methods = [
+        'POST' => ['invalidchars', 'csrf'],
+        'GET'  => ['csrf'],
+    ];
 
     /**
      * List of filter aliases that should run on any

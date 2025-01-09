@@ -8,31 +8,36 @@
                 <p class="text-muted text-center">Faça login para aceder ao sistema.</p>
                 <hr>
 
-                <?=form_open('login-submit',['novalidate'=>true])?>
-                
-                    <div class="form-group mb-3">
-                        <label class="form-label" for="username">Usuário</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="password" class="form-label">Palavra-passe</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <button type="submit" class="btn btn-secondary w-100 btn-login">Login</button>
-                    </div>
-            
-                <?=form_close()?>
+                <?= form_open('login-submit', ['novalidate' => true]) ?>
 
-                <?php if(!empty($validation_errors)):?>
+                <div class="form-group mb-3">
+                    <label class="form-label" for="username">Usuário</label>
+                    <input type="text" class="form-control" id="username" name="username" required value="<?= old('username') ?>">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password" class="form-label">Palavra-passe</label>
+                    <input type="password" class="form-control" id="password" name="password" required value="<?= old('password') ?>">
+                </div>
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-secondary w-100 btn-login">Login</button>
+                </div>
+
+                <?= form_close() ?>
+
+                <?php if (!empty($validation_errors)): ?>
                     <div class="alert alert-danger">
                         <ul>
-                            <?php foreach($validation_errors as $error):?>
-                                <li><?=$error?></li>
-                            <?php endforeach;?>
+                            <?php foreach ($validation_errors as $error): ?>
+                                <li><?= $error ?></li>
+                            <?php endforeach; ?>
                         </ul>
-                    </div> 
-                        
+                    </div>
+                <?php endif ?>
+
+                <?php if (!empty($login_error)):?>
+                    <div class="alert alert-danger">
+                        <?= $login_error?>
+                    </div>
                 <?php endif?>
             </div>
 
